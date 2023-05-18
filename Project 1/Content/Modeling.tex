@@ -1,0 +1,92 @@
+\section{Setting Up Model}
+\subsection{Theory}
+After understanding how each stage works, we need to answer the question
+\begin{center}
+    \textit{When should we wake up?}
+\end{center}
+During deep sleep (stage 3 and REM), your cells repair and rebuild, and hormones are secreted to promote bone and muscle growth. Your body also uses deep sleep to strengthen your immunity so you can fight off illness and infection. Therefore, an alarm going off when a person is in one of the deeper stages of sleep may lead to grogginess or difficulty waking up.\cite{wakeup}\\[0.5cm]
+Waking up \underline{\textit{at the end of the cycle}}, when sleep is lightest, may be best to help the person wake feeling more rested and ready to start the day.
+
+\subsection{Recommendations}
+
+Many organizations around the world have their own sleep duration recommendations, overall, they are all very similar, and often reference the recommendations from the US.\cite{ageimpact}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|l|l|l|}
+\hline
+\multicolumn{2}{|c|}{\textbf{National Sleep Foundation (US)}} &
+\multicolumn{2}{|c|}{\textbf{AASM/SRS (US)}}\\
+\hline
+\textbf{Age group} & \textbf{Rec. Hours} &
+\textbf{Age group} & \textbf{Rec. Hours}\\ \hline
+Newborns (0–3 months) & 14–17 hours & Newborns (0–3 months) & Not included\\ \hline
+Infants (4–11 months) &	12–15 hours & Infants (4–11 months)	& 12–16 hours\\ \hline
+Toddlers (1–2 years) & 11–14 hours & Toddlers (1–2 years) & 11–14 hours\\ \hline
+Preschoolers (3–5 years) & 10–13 hour & Preschoolers (3–5 years) & 10–13 hours\\ \hline
+Children (6–13 years) & 9–11 hours & Children (6–12 years) & 9–12 hours\\ \hline
+Teenagers (14–17 years) & 8–10 hours & Teenagers (13–17 years) & 8–10 hours\\ \hline
+Young adults (18–25 years) & 7–9 hours & Adults (18–60 years) & $\geq$7 hours\\ \hline
+Adults (26–64 years) & 7–9 hours & Adults (26–64 years) & Not included\\ \hline
+Older adults ($\geq$65 years) & 7–8 hours & Older adults ($\geq$65 years) & Not included\\ \hline
+\end{tabular}
+\caption{Sleep duration recommendations in the US}
+\label{tab:my_label_with_H_tag}
+\end{table}
+
+According to tables above and the theory, we can calculate the average number of cycles that different age group needs. The results must be an integer since our theory said that we need to complete a full cycle, and results have to meet the recommendation hours for each group as well. Most data shows that every cycle takes about 90 minutes, so in this case we assume \textit{1 cycle = 90 minutes}.
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|l|l|}
+\hline
+\multicolumn{2}{|c|}{\textbf{National Sleep Foundation (US)}}\\
+\hline
+\textbf{Age group} & \textbf{Rec. Hours} & \textbf{Rec. Cycles}\\ \hline
+Newborns (0–3 months) & 16.5 hours & 11 cycles\\ \hline
+Infants (4–11 months) &	13.5 hours & 9 cycles\\ \hline
+Toddlers (1–2 years) & 12 hours & 8 cycles\\ \hline
+Preschoolers (3–5 years) & 12 hours & 8 cycles\\ \hline
+Children (6–13 years) & 10.5 hours & 7 cycles\\ \hline
+Teenagers (14–17 years) & 9 hours & 6 cycles\\ \hline
+Young adults (18–25 years) & 9 hours & 6 cycles\\ \hline
+Adults (26–64 years) & 7.5 hours & 5 cycles\\ \hline
+Older adults ($\geq$65 years) & 7.5 hours & 5 cycles\\ \hline
+\end{tabular}
+\caption{Sleep cycles recommendations}
+\label{tab:my_label_with_H_tag}
+\end{table}
+
+\subsection{Formulation}
+Let n be the recommendation cycle of each age group, which we have calculated above. Since the stage 1 of the cycle only starts when we officially enter our sleep, so it might take an amount of time C to get to it.
+$$
+T = 90 \times n + C
+$$
+\begin{itemize}
+    \item T: Hours need to sleep
+    \item n: Number of cycles needed
+    \item C: Amount of time to sleep (to start stage 1)
+\end{itemize}
+
+\subsection{Other Factors}
+At most dosages, alcohol typically causes a decrease in sleep onset, that is the amount of time it takes to fall asleep, and the higher the levels of alcohol the deeper the sleep. However, this is offset by fragmented and disrupted sleep the later part of the night.\\
+
+During the years 2019, 2020 and 2021, Sleep Cycle’s sleep survey users on average tagged alcohol in their sleep notes around 2.5 percent of their total number of sleeps. The sleep notes feature within the \href{https://apps.apple.com/app/id320606217?mt=8}{Sleep Cycle app} allows users to tag a number of activities (such as alcohol consumption, exercise, etc.) that they have undertaken before bedtime. This lets our users draw their own conclusions on whether a particular activity led to a poorer or improved quality of sleep and can also let them see certain patterns over time.\\
+
+The sleep records tagged with alcohol showed \textbf{no large difference in average bedtime} (the time the user went to sleep).  It’s important to note that we can’t draw conclusions on individual sleep quality and data on the quantity of alcohol consumed or the time of day is not available. However, it’s fascinating to learn that the data shows that the average sleep duration increases \textbf{(11-15 minutes)} and perhaps somewhat surprisingly a slightly better morning mood is noted by our users (up between 1.2-2.3 percent).\cite{alcoholeff}\\
+
+According to the data we have, our formula will be adjusted to fit who uses alcohol before sleep.\\
+$$
+T = 90 \times n + C + 15
+$$
+\begin{itemize}
+    \item T: Hours need to sleep
+    \item n: Number of cycles needed
+    \item C: Amount of time to sleep (to start stage 1)
+    \item sleep duration increases \textbf{15 minutes}
+\end{itemize}
+
+\subsection{Strength and Weakness}
+Strength: The formula is easy to calculate, everyone can estimate sleeping time and wake up time for themselves. The program below can help you with that.\\
+
+Weakness: Since we created our formula based on different article and research, we did not have data to estimate the accurate of the model. Also, this is the recommend hours each age group should sleep, there are a lot of factors that affect sleep condition everyday. Hence, the amount of time for each cycle and amount of time to actually enter sleep stages are also estimated, there will have some errors. As long as we could collect more data, we could adjust the formula further on.
